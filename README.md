@@ -16,6 +16,7 @@ in [packer docs](https://www.packer.io/intro/getting-started/install.html)
 ### Validate a template
 Choose an ImageName such as "MyImage" and run
 ```
+cd src
 packer validate -var 'ImageName=my-test-image' template.json
 ```
 
@@ -24,8 +25,8 @@ To run a build you must have an AWS account and access to EC2.
 
 * Request an IAM account in [Imagecentral](https://github.com/Sage-Bionetworks/imagecentral-infra)
 * Change password and set up MFA
-* Create a Keypair
-* Add your access code and secrety key to `~/.aws/credentials`, using a profile such as "imagecentral.jsmith"
+* Create an Access Key
+* Add your access code and secret key to `~/.aws/credentials`, using a profile such as "imagecentral.jsmith"
 * Authenticate with `awsmfa`, for example `awsmfa -i imagecentral.jsmith -t jsmith@imagecentral`
 * Finally, get the correct role ARN for the PackerServiceRole then add the following:
 ```
@@ -41,7 +42,7 @@ Now you will be able to build an image and deploy it to Imagecentral.
 If you would like to test building an AMI run:
 ```
 cd src
-packer build -var AwsProfile=packer-service-imagecentral -var AwsRegion=us-east-1 -var ImageName=my-test-image src/template.json
+packer build -var AwsProfile=packer-service-imagecentral -var AwsRegion=us-east-1 -var ImageName=my-test-image -var PACKER_LOG=1 template.json
 ```
 
 Packer will do the following:
@@ -49,7 +50,9 @@ Packer will do the following:
 * Create an AMI from the EC2
 * Delete the EC2
 
-__Note__: Packer deploys a new AMI to the AWS account specified by the AwsProfile
+__Notes__:
+ * Packer deploys a new AMI to the AWS account specified by the AwsProfile
+ * Subsequent builds may require the [-force](https://packer.io/docs/commands/build.html#force) flag
 
 ### Image Accessability
 This project is setup to build publicly accessible images.  To change it to
