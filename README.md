@@ -91,6 +91,12 @@ List the built images by using the AWS CLI:
 aws ec2 describe-images --owners 867686887310 --filters Name=tag:Name,Values=my-test-image
 ```
 
+### Removal
+Remove the built images by using the AWS CLI:
+```
+aws ec2 deregister-image --image-id ami-abcdef0123456789
+```
+
 ## Contributions
 Contributions are welcome.
 
