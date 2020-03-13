@@ -92,10 +92,9 @@ aws ec2 describe-images --owners 867686887310 --filters Name=tag:Name,Values=my-
 ```
 
 ### Removal
-Remove the built images by using the AWS CLI:
-```
-aws ec2 deregister-image --image-id ami-abcdef0123456789
-```
+Building an AMI will create the AMI and one or more snapshots for the AMI.  When deleting
+the AMI remember to also delete its snapshots. Use the provided [bash script](deregister_ami.sh)
+to remove the AMI and its snapshots.
 
 ## Contributions
 Contributions are welcome.
