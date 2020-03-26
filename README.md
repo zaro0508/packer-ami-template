@@ -1,6 +1,9 @@
 # packer-ami-template
 A template for quickly getting a new packer AWS AMI project started.
 
+__Note__: The files in this template are specifically to build a Ubuntu distribution.
+You may need to modify it slightly to work with other distros (redhat, aws linux, windows, etc..)
+
 ## Naming
 **IMPORTANT**: Our naming convention is `packer-<image name>` (i.e. packer-base-ubuntu-bionic).
 Please name your repo accordingly.  This naming convention helps us locate packer repos and
@@ -14,7 +17,7 @@ in [packer docs](https://www.packer.io/intro/getting-started/install.html)
 * Install [ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
 
 ### Validate a template
-Choose an ImageName such as "MyImage" and run
+Choose an ImageName such as "my-test-image" and run
 ```
 cd src
 packer validate -var 'ImageName=my-test-image' template.json
