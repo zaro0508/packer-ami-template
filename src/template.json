@@ -54,7 +54,7 @@
     "Department": "Platform",
     "ImageName": "{{env `ImageName`}}",
     "InstanceType": "t3.nano",
-    "OwnerEmail": "joe.smith@sagebase.org",
+    "OwnerEmail": "it@sagebase.org",
     "Project": "Infrastructure",
     "SnapshotGroups": "all",
     "SourceImage": "ami-07ebfd5b3428b6f4d",
