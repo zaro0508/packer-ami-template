@@ -83,8 +83,9 @@ Packer will do the following:
 __Note__: The image will automatically be named gitrepo-branch (i.e. MyRepo-master)
 
 ### Versioning
-Versions are managed by git tags. When the tag is pushed travis will build
-an AMI version with that tag number.
+Versions are managed by git tags. When a tag is pushed travis will build
+an AMI for that tag. Tag builds are immutable for downstream dependencies.
+Once a tag build is generated the AMI for that build will never go away.
 
 __Note__: The image will automatically be named gitrepo-tag (i.e. MyRepo-v1.0.0)
 
